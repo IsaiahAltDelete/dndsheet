@@ -1,4 +1,4 @@
-const fields = ['str','dex','con','int','wis','cha'];
+const fields = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
 
 function abilityMod(score) {
   return Math.floor((score - 10) / 2);
@@ -33,33 +33,41 @@ function profBonus(level) {
 function calculate() {
   const race = document.getElementById('race').value;
   const bg = document.getElementById('background').value;
-  const level = parseInt(document.getElementById('level').value,10)||1;
+  const level = parseInt(document.getElementById('level').value, 10) || 1;
 
   const raceB = raceBonus(race);
   const bgB = backgroundBonus(bg);
 
+  let dexTotal = 0;
+  let wisTotal = 0;
+
   fields.forEach(f => {
-    const base = parseInt(document.getElementById(f).value,10)||0;
+    const base = parseInt(document.getElementById(f).value, 10) || 0;
     const total = base + raceB[f] + bgB[f];
-    document.getElementById(f+'-mod').textContent = abilityMod(total);
+    document.getElementById(f + '-total').textContent = total;
+    document.getElementById(f + '-mod').textContent = abilityMod(total);
+    if (f === 'dex') dexTotal = total;
+    if (f === 'wis') wisTotal = total;
   });
 
   document.getElementById('prof').textContent = '+' + profBonus(level);
+  document.getElementById('initiative').textContent = abilityMod(dexTotal);
+  document.getElementById('passive-perception').textContent = 10 + abilityMod(wisTotal);
 
   save();
 }
 
 function save() {
   const data = {};
-  ['name','class','level','race','background',...fields].forEach(id => {
+  ['name', 'class', 'level', 'race', 'background', 'ac', 'hp', 'speed', ...fields].forEach(id => {
     data[id] = document.getElementById(id).value;
   });
   localStorage.setItem('sheet', JSON.stringify(data));
 }
 
 function load() {
-  const data = JSON.parse(localStorage.getItem('sheet')||'{}');
-  Object.entries(data).forEach(([k,v])=>{
+  const data = JSON.parse(localStorage.getItem('sheet') || '{}');
+  Object.entries(data).forEach(([k, v]) => {
     const el = document.getElementById(k);
     if (el) el.value = v;
   });
