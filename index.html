@@ -1,12 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>D&D Character Sheet</title>
-  </head>
-  <body class="bg-white text-black dark:bg-black dark:text-white">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>DnD Character Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>DnD Character Sheet</h1>
+    <form id="sheet">
+      <section class="basic">
+        <label>Name <input type="text" id="name"></label>
+        <label>Class <input type="text" id="class"></label>
+        <label>Level <input type="number" id="level" min="1" max="20" value="1"></label>
+        <label>Race
+          <select id="race">
+            <option value="human">Human (+1 all)</option>
+            <option value="elf">Elf (+2 Dex)</option>
+            <option value="dwarf">Dwarf (+2 Con)</option>
+            <option value="halfling">Halfling (+2 Dex)</option>
+          </select>
+        </label>
+        <label>Background
+          <select id="background">
+            <option value="acolyte">Acolyte (+1 Wis)</option>
+            <option value="soldier">Soldier (+1 Str)</option>
+            <option value="scholar">Scholar (+1 Int)</option>
+            <option value="criminal">Criminal (+1 Dex)</option>
+          </select>
+        </label>
+      </section>
+      <section class="ability-scores">
+        <h2>Ability Scores</h2>
+        <div class="scores">
+          <div class="score"><label>STR <input type="number" id="str" value="10"></label> <span id="str-mod"></span></div>
+          <div class="score"><label>DEX <input type="number" id="dex" value="10"></label> <span id="dex-mod"></span></div>
+          <div class="score"><label>CON <input type="number" id="con" value="10"></label> <span id="con-mod"></span></div>
+          <div class="score"><label>INT <input type="number" id="int" value="10"></label> <span id="int-mod"></span></div>
+          <div class="score"><label>WIS <input type="number" id="wis" value="10"></label> <span id="wis-mod"></span></div>
+          <div class="score"><label>CHA <input type="number" id="cha" value="10"></label> <span id="cha-mod"></span></div>
+        </div>
+      </section>
+      <section class="derived">
+        <p>Proficiency Bonus: <span id="prof"></span></p>
+      </section>
+    </form>
+  </main>
+  <script src="script.js"></script>
+</body>
 </html>
