@@ -33,16 +33,26 @@
       <section class="ability-scores">
         <h2>Ability Scores</h2>
         <div class="scores">
-          <div class="score"><label>STR <input type="number" id="str" value="10"></label> <span id="str-mod"></span></div>
-          <div class="score"><label>DEX <input type="number" id="dex" value="10"></label> <span id="dex-mod"></span></div>
-          <div class="score"><label>CON <input type="number" id="con" value="10"></label> <span id="con-mod"></span></div>
-          <div class="score"><label>INT <input type="number" id="int" value="10"></label> <span id="int-mod"></span></div>
-          <div class="score"><label>WIS <input type="number" id="wis" value="10"></label> <span id="wis-mod"></span></div>
-          <div class="score"><label>CHA <input type="number" id="cha" value="10"></label> <span id="cha-mod"></span></div>
+          <div class="score"><label>STR <input type="number" id="str" value="10"></label> <span id="str-total"></span> <span id="str-mod"></span></div>
+          <div class="score"><label>DEX <input type="number" id="dex" value="10"></label> <span id="dex-total"></span> <span id="dex-mod"></span></div>
+          <div class="score"><label>CON <input type="number" id="con" value="10"></label> <span id="con-total"></span> <span id="con-mod"></span></div>
+          <div class="score"><label>INT <input type="number" id="int" value="10"></label> <span id="int-total"></span> <span id="int-mod"></span></div>
+          <div class="score"><label>WIS <input type="number" id="wis" value="10"></label> <span id="wis-total"></span> <span id="wis-mod"></span></div>
+          <div class="score"><label>CHA <input type="number" id="cha" value="10"></label> <span id="cha-total"></span> <span id="cha-mod"></span></div>
         </div>
       </section>
+
+      <section class="vitals">
+        <h2>Vitals</h2>
+        <label>Armor Class <input type="number" id="ac" value="10"></label>
+        <label>Hit Points <input type="number" id="hp" value="1"></label>
+        <label>Speed <input type="number" id="speed" value="30"></label>
+      </section>
+
       <section class="derived">
         <p>Proficiency Bonus: <span id="prof"></span></p>
+        <p>Initiative: <span id="initiative"></span></p>
+        <p>Passive Perception: <span id="passive-perception"></span></p>
       </section>
     </form>
   </main>
