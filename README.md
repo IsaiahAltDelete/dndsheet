@@ -1,27 +1,5 @@
-# D&D Character Sheet Manager
+# Static D&D Character Sheet
 
-A simple React-based character sheet for Dungeons & Dragons. It uses Tailwind CSS for styling and stores data in your browser's local storage.
+This project is a lightweight, static web page for managing a single Dungeons & Dragons character. All data is stored in your browser's local storage.
 
-## Setup
-
-1. Install dependencies:
-
-```bash
-npm install
-```
-
-2. Start the development server:
-
-```bash
-npm start
-```
-
-Open `http://localhost:5173` in your browser.
-
-## Build
-
-To create a production build:
-
-```bash
-npm run build
-```
+Open `index.html` in any modern browser to use the sheet.

@@ -1,0 +1,29 @@
+body {
+  font-family: sans-serif;
+  background: #fff;
+  color: #000;
+  padding: 2rem;
+}
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+label {
+  display: block;
+  margin: 0.5rem 0;
+}
+input, select {
+  border: 1px solid #000;
+  padding: 0.25rem;
+  background: #fff;
+  color: #000;
+}
+.scores {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+.score {
+  display: flex;
+  justify-content: space-between;
+}
