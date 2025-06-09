@@ -1,12 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>D&D Character Sheet</title>
-  </head>
-  <body class="bg-white text-black dark:bg-black dark:text-white">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>DnD Character Manager</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>DnD Character Sheet</h1>
+    <form id="sheet">
+      <section class="basic">
+        <label>Name <input type="text" id="name"></label>
+        <label>Class
+          <select id="class">
+            <option value="barbarian">Barbarian</option>
+            <option value="bard">Bard</option>
+            <option value="cleric">Cleric</option>
+            <option value="druid">Druid</option>
+            <option value="fighter">Fighter</option>
+            <option value="monk">Monk</option>
+            <option value="paladin">Paladin</option>
+            <option value="ranger">Ranger</option>
+            <option value="rogue">Rogue</option>
+            <option value="sorcerer">Sorcerer</option>
+            <option value="warlock">Warlock</option>
+            <option value="wizard">Wizard</option>
+          </select>
+        </label>
+        <label>Level <input type="number" id="level" min="1" max="20" value="1"></label>
+        <label>Race
+          <select id="race">
+            <option value="human">Human (+1 all)</option>
+            <option value="dwarf">Dwarf (+2 Con)</option>
+            <option value="elf">Elf (+2 Dex)</option>
+            <option value="halfling">Halfling (+2 Dex)</option>
+            <option value="dragonborn">Dragonborn (+2 Str, +1 Cha)</option>
+            <option value="gnome">Gnome (+2 Int)</option>
+            <option value="half-elf">Half-Elf (+2 Cha, +1 Dex)</option>
+            <option value="half-orc">Half-Orc (+2 Str, +1 Con)</option>
+            <option value="tiefling">Tiefling (+2 Cha, +1 Int)</option>
+          </select>
+        </label>
+        <label>Background
+          <select id="background">
+            <option value="acolyte">Acolyte (+1 Wis)</option>
+            <option value="criminal">Criminal (+1 Dex)</option>
+            <option value="folkHero">Folk Hero (+1 Con)</option>
+            <option value="noble">Noble (+1 Cha)</option>
+            <option value="sage">Sage (+1 Int)</option>
+            <option value="soldier">Soldier (+1 Str)</option>
+            <option value="hermit">Hermit (+1 Wis)</option>
+            <option value="entertainer">Entertainer (+1 Cha)</option>
+            <option value="guildArtisan">Guild Artisan (+1 Int)</option>
+            <option value="outlander">Outlander (+1 Str)</option>
+            <option value="sailor">Sailor (+1 Dex)</option>
+            <option value="urchin">Urchin (+1 Dex)</option>
+          </select>
+        </label>
+      </section>
+      <section class="ability-scores">
+        <h2>Ability Scores</h2>
+        <div class="scores">
+          <div class="score"><label>STR <input type="number" id="str" value="10"></label> <span id="str-total"></span> <span id="str-mod"></span></div>
+          <div class="score"><label>DEX <input type="number" id="dex" value="10"></label> <span id="dex-total"></span> <span id="dex-mod"></span></div>
+          <div class="score"><label>CON <input type="number" id="con" value="10"></label> <span id="con-total"></span> <span id="con-mod"></span></div>
+          <div class="score"><label>INT <input type="number" id="int" value="10"></label> <span id="int-total"></span> <span id="int-mod"></span></div>
+          <div class="score"><label>WIS <input type="number" id="wis" value="10"></label> <span id="wis-total"></span> <span id="wis-mod"></span></div>
+          <div class="score"><label>CHA <input type="number" id="cha" value="10"></label> <span id="cha-total"></span> <span id="cha-mod"></span></div>
+        </div>
+      </section>
+      <section class="derived">
+        <p>Proficiency Bonus: <span id="prof"></span></p>
+      </section>
+    </form>
+  </main>
+  <script src="script.js"></script>
+</body>
 </html>
