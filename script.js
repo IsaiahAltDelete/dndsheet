@@ -4,21 +4,37 @@ function abilityMod(score) {
   return Math.floor((score - 10) / 2);
 }
 
-function raceBonus(race) {
-  const b = {str:0,dex:0,con:0,int:0,wis:0,cha:0};
-  if (race === 'human') { for (const f of fields) b[f] = 1; }
-  if (race === 'elf') b.dex = 2;
-  if (race === 'dwarf') b.con = 2;
-  if (race === 'halfling') b.dex = 2;
-  return b;
-}
+const raceBonuses = {
+  human: {str:1,dex:1,con:1,int:1,wis:1,cha:1},
+  dwarf: {con:2},
+  elf: {dex:2},
+  halfling: {dex:2},
+  dragonborn: {str:2, cha:1},
+  gnome: {int:2},
+  'half-elf': {cha:2, dex:1},
+  'half-orc': {str:2, con:1},
+  tiefling: {cha:2, int:1}
+};
 
-function backgroundBonus(bg) {
+const backgroundBonuses = {
+  acolyte: {wis:1},
+  criminal: {dex:1},
+  folkHero: {con:1},
+  noble: {cha:1},
+  sage: {int:1},
+  soldier: {str:1},
+  hermit: {wis:1},
+  entertainer: {cha:1},
+  guildArtisan: {int:1},
+  outlander: {str:1},
+  sailor: {dex:1},
+  urchin: {dex:1}
+};
+
+function bonusLookup(map, key) {
   const b = {str:0,dex:0,con:0,int:0,wis:0,cha:0};
-  if (bg === 'acolyte') b.wis = 1;
-  if (bg === 'soldier') b.str = 1;
-  if (bg === 'scholar') b.int = 1;
-  if (bg === 'criminal') b.dex = 1;
+  const src = map[key] || {};
+  fields.forEach(f => { b[f] = src[f] || 0; });
   return b;
 }
 
@@ -35,13 +51,14 @@ function calculate() {
   const bg = document.getElementById('background').value;
   const level = parseInt(document.getElementById('level').value,10)||1;
 
-  const raceB = raceBonus(race);
-  const bgB = backgroundBonus(bg);
+  const raceB = bonusLookup(raceBonuses, race);
+  const bgB = bonusLookup(backgroundBonuses, bg);
 
   fields.forEach(f => {
     const base = parseInt(document.getElementById(f).value,10)||0;
     const total = base + raceB[f] + bgB[f];
-    document.getElementById(f+'-mod').textContent = abilityMod(total);
+    document.getElementById(f+'-total').textContent = total;
+    document.getElementById(f+'-mod').textContent = '(' + abilityMod(total) + ')';
   });
 
   document.getElementById('prof').textContent = '+' + profBonus(level);
@@ -52,7 +69,8 @@ function calculate() {
 function save() {
   const data = {};
   ['name','class','level','race','background',...fields].forEach(id => {
-    data[id] = document.getElementById(id).value;
+    const el = document.getElementById(id);
+    if (el) data[id] = el.value;
   });
   localStorage.setItem('sheet', JSON.stringify(data));
 }
