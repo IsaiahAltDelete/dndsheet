@@ -14,6 +14,11 @@ class Character {
     if (race === 'elf') b.dex = 2;
     if (race === 'dwarf') b.con = 2;
     if (race === 'halfling') b.dex = 2;
+    if (race === 'gnome') b.int = 2;
+    if (race === 'half-orc') { b.str = 2; b.con = 1; }
+    if (race === 'tiefling') { b.cha = 2; b.int = 1; }
+    if (race === 'dragonborn') { b.str = 2; b.cha = 1; }
+    if (race === 'half-elf') { b.cha = 2; b.dex = 1; }
     return b;
   }
 
@@ -117,7 +122,9 @@ const character = new Character();
 window.addEventListener('DOMContentLoaded', () => {
   character.load();
   character.calculate();
-  document.getElementById('sheet').addEventListener('input', () => character.calculate());
+  const form = document.getElementById('sheet');
+  form.addEventListener('input', () => character.calculate());
+  form.addEventListener('change', () => character.calculate());
 
   document.querySelectorAll('[data-sides]').forEach(btn => {
     btn.addEventListener('click', () => {

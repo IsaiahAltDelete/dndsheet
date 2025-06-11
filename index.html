@@ -6,12 +6,12 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Cinzel:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gradient-to-br from-indigo-200 via-purple-200 to-pink-200 min-h-screen p-6">
-  <main class="max-w-3xl mx-auto bg-white/70 backdrop-blur-md p-6 rounded-lg shadow-lg space-y-6">
+<body class="min-h-screen p-6 bg-gradient-to-br from-yellow-100 via-amber-100 to-stone-100">
+  <main class="max-w-3xl mx-auto bg-white/70 backdrop-blur-md border-2 border-stone-300 p-6 rounded-lg shadow-lg space-y-6">
     <h1 class="text-3xl font-bold text-center">Hero Forge</h1>
     <form id="sheet" class="space-y-6">
       <section class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -21,7 +21,21 @@
         </label>
         <label class="block">
           <span class="font-semibold">Class</span>
-          <input type="text" id="class" class="w-full border border-gray-300 rounded px-2 py-1">
+          <select id="class" class="w-full border border-gray-300 rounded px-2 py-1">
+            <option value="barbarian">Barbarian</option>
+            <option value="bard">Bard</option>
+            <option value="cleric">Cleric</option>
+            <option value="druid">Druid</option>
+            <option value="fighter">Fighter</option>
+            <option value="monk">Monk</option>
+            <option value="paladin">Paladin</option>
+            <option value="ranger">Ranger</option>
+            <option value="rogue">Rogue</option>
+            <option value="sorcerer">Sorcerer</option>
+            <option value="warlock">Warlock</option>
+            <option value="wizard">Wizard</option>
+            <option value="artificer">Artificer</option>
+          </select>
         </label>
         <label class="block">
           <span class="font-semibold">Level</span>
@@ -34,6 +48,11 @@
             <option value="elf">Elf (+2 Dex)</option>
             <option value="dwarf">Dwarf (+2 Con)</option>
             <option value="halfling">Halfling (+2 Dex)</option>
+            <option value="gnome">Gnome (+2 Int)</option>
+            <option value="half-orc">Half-Orc (+2 Str, +1 Con)</option>
+            <option value="tiefling">Tiefling (+2 Cha, +1 Int)</option>
+            <option value="dragonborn">Dragonborn (+2 Str, +1 Cha)</option>
+            <option value="half-elf">Half-Elf (+2 Cha, +1 Dex)</option>
           </select>
         </label>
         <label class="block">
